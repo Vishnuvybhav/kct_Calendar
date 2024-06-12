@@ -39,7 +39,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if IS_PRODUCTION:
     SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
-
+CSRF_TRUSTED_ORIGINS = ['https://kctcal.iqubekct.ac.in/']
 
 MEDIA_URL = '/media/'  
 # Application definition
@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware', 
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
