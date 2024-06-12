@@ -39,7 +39,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if IS_PRODUCTION:
     SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
-CSRF_TRUSTED_ORIGINS = ['https://kctcal.iqubekct.ac.in/']
+CSRF_TRUSTED_ORIGINS = ['https://kctcal.iqubekct.ac.in']
 
 MEDIA_URL = '/media/'  
 # Application definition
