@@ -36,6 +36,9 @@ ALLOWED_HOSTS = ['*']
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+if IS_PRODUCTION:
+    SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
 
 
 MEDIA_URL = '/media/'  
