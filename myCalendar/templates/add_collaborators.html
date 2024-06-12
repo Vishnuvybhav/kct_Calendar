@@ -1,0 +1,55 @@
+{% extends "index.html" %}
+
+{%block header%}
+{%endblock%}
+
+{% block content %}
+{% if messages %}
+        <div id="messages">
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Add Collaborators</h2>
+            <form method="POST" action="{% url 'add_collaborators' %}">
+                {% csrf_token %}
+                <div class="form-group col-md-6">
+                    <label for="event">Add Events</label>
+                    <select class="form-control" id="event" name="event" required>
+                        <option selected value="None">Select Event...</option>
+                        {% for event in events %}
+                            <option value="{{ event.id }}">{{ event.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="user">Add User</label>
+                    <select class="form-control" id="user" name="user" required>
+                        <option selected value="None">Select User...</option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="access">Add Permissions</label>
+                    <select class="form-control" id="access" name="access" required>
+                        <option selected value="None">Select Permission...</option>
+                        {% for access in access_levels %}
+                            <option value="{{ access.id }}">{{ access.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn bg-gradient-primary mt-3 w-20">Add Collaborator</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

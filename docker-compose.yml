@@ -1,0 +1,38 @@
+version: "3"
+services:
+  web:
+    container_name: kct_cal_web_django
+    restart: always
+    build: .
+    ports:
+      - 7021:8000  
+    expose:
+      - 8000 
+    volumes:
+      - kct_cal_prod_media_data:/usr/src/app/media/  # Mounts the volume for media files to the path the Django app uses to serve them
+    env_file: production.env
+    command: sh '/usr/src/app/run_web.sh'
+
+  postgres:
+    container_name: kct_cal_postgres
+    restart: always
+    image: postgres:16
+    env_file: production.env
+    ports:
+      - "5800:5432" 
+    volumes:
+      - kct_cal_prod_pgdata:/var/lib/postgresql/data 
+
+  # redis:
+  #   container_name: kct_cal_redis
+  #   restart: always
+  #   image: redis:latest
+  #   ports:
+  #     - 11000:6379 
+
+volumes:
+  kct_cal_prod_media_data: 
+  kct_cal_prod_pgdata: 
+
+
+  #
