@@ -19,7 +19,7 @@ services:
     image: postgres:16
     env_file: production.env
     ports:
-      - "5800:5432" 
+      - "7022:5432" 
     volumes:
       - kct_cal_prod_pgdata:/var/lib/postgresql/data 
 
